@@ -1,8 +1,9 @@
 pipeline {
     agent { label  "agentfarm" }
-    environment{
+    environment {
 	KEY_FILE = '/home/ubuntu/.ssh/vm-instance-key.pem'
 	USER = 'ubuntu'
+	}
     stages {
         stage('Delete the workspace') {
            steps {
