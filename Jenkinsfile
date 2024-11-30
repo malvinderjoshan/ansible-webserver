@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Installing Ansible') {
             steps {
-              script{
+              script {
                 def ansible_exists = fileExists '/usr/bin/ansible'
                 if (ansible_exists==true) {
 		
@@ -46,14 +46,14 @@ pipeline {
           }
         }
         stage('Test website'){
-          steps{
+          steps {
             sh   'export   ANSIBLE_ROLES_PATH=/opt/jenkins/workspace/ansible-pipeline/roles   && ansible-playbook   -u   $USER   --private-key  $KEY_FILE   -i   $WORKSPACE/host_inventory $WORKSPACE/playbooks/website-test.yml'
 
           }
         }
         stage('Deploy Docker Application')
         {
-          steps{
+          steps { 
             sh   'export   ANSIBLE_ROLES_PATH=/opt/jenkins/workspace/ansible-pipeline/roles   && ansible-playbook   -u   $USER   --private-key  $KEY_FILE   -i   $WORKSPACE/host_inventory $WORKSPACE/playbooks/docker-install.yml'
 
           }
@@ -69,4 +69,5 @@ post {
     }
 }
 
+}
 }
