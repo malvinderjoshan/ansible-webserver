@@ -9,8 +9,10 @@ pipeline {
         stage('Installing Ansible') {
             steps {
               script{
+		sh 'sudo yum install httpd -y'
                 def ansible_exists = fileExists '/usr/bin/ansible'
                 if (ansible_exists==true) {
+		
                     echo "skipping Ansible install - already exists"
 
                 }
