@@ -1,4 +1,4 @@
-piipeline {
+pipeline {
     agent { label  "agentfarm" }
     stages {
         stage('Delete the workspace') {
